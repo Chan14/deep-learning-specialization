@@ -10,12 +10,11 @@ Design notes:
     - L2 regularization lives in losses.py, NOT here. Model computes data-loss
       gradients only; the regularizer's contribution is added at the optimizer.
 
-Verified: Gradient check passed (see grad_check.py).
+Verified: Gradient check passed (see grad_check.py and tests/gd_variants/).
 Max relative error across all parameters: ~5e-9.
 """
 
 import numpy as np
-
 
 # ---------- Activations ----------
 
@@ -177,26 +176,8 @@ def backward(
 
     # Sanity check — invariant 5
     for k in params:
-        assert (
-            grads[k].shape == params[k].shape
-        ), f"Shape mismatch for {k}: grad {grads[k].shape} vs param {params[k].shape}"
+        assert grads[k].shape == params[k].shape, (
+            f"Shape mismatch for {k}: grad {grads[k].shape} vs param {params[k].shape}"
+        )
 
     return grads
-
-
-# ---------- Smoke test ----------
-
-if __name__ == "__main__":
-    # Tiny sanity check: does forward run? does backward run? shapes right?
-    rng = np.random.default_rng(0)
-    X_fake = rng.normal(size=(5, 8))
-    y_fake = rng.normal(size=(5, 1))
-
-    params = init_parameters([8, 32, 16, 1])
-    y_hat, cache = forward(X_fake, params)
-    grads = backward(y_hat, y_fake, params, cache)
-
-    print(f"y_hat shape: {y_hat.shape}  (expected (5, 1))")
-    for k in params:
-        print(f"  {k}: param {params[k].shape}, grad {grads[k].shape}")
-    print("Forward + backward smoke test passed.")

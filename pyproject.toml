@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dlspec"
+version = "0.1.0"
+description = "Chan's Deep Learning Specialization work: assignments, redos, experiments, and reusable code."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Chan" }]
+# What the code in this repo imports (src/, assignments, notebooks).
+# requirements.txt is the exact pinned snapshot of the env that runs it all.
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.13",
+    "matplotlib>=3.8",
+    "scikit-learn>=1.5",
+    "h5py>=3.11",          # the course's .h5 datasets
+    "pillow>=10.0",
+    "tensorflow>=2.18",
+    "torch>=2.5",
+    "ipywidgets>=8.1",
+    "ipympl>=0.9",
+]
+
+[project.optional-dependencies]
+# pip install -e ".[dev]"
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "nbstripout>=0.7",
+    "jupyterlab>=4.0",
+    "ipykernel>=6.29",
+]
+
+# src layout: setuptools finds packages under src/ only.
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# importlib mode: same-named test files in different folders don't collide,
+# and tests must import the installed package (no accidental repo-root imports).
+addopts = ["--import-mode=importlib", "-ra"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+# Course-provided assignments and scratch work are kept as-is.
+extend-exclude = [
+    "course1_neural_networks_and_deep_learning",
+    "course2_improving_deep_neural_networks",
+    "explorations",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+# E741: `l` is the standard layer index in DL notation (W[l], b[l]).
+ignore = ["E501", "E741"]

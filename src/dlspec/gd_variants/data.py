@@ -112,14 +112,3 @@ def load_and_prepare_data(
         "y_mean": y_mean,
         "y_std": y_std,
     }
-
-
-if __name__ == "__main__":
-    data = load_and_prepare_data()
-    # Quick sanity checks
-    print(f"Data loaded. X_train shape: {data['X_train'].shape}")
-    assert abs(data["X_train"].mean()) < 0.01, "Train features not centered"
-    assert abs(data["X_train"].std() - 1.0) < 0.01, "Train features not unit variance"
-    # Dev/test should be CLOSE to 0 mean, but not exactly
-    assert abs(data["X_dev"].mean()) < 0.1, "Dev features unexpectedly far from 0"
-    assert abs(data["X_test"].mean()) < 0.1, "Test features unexpectedly far from 0"

@@ -5,11 +5,12 @@ Verifies that the analytic gradients from model.backward match centered-
 difference numeric gradients to high precision. This is the single most
 important unit test for any hand-rolled backprop.
 
-Run: python grad_check.py
+Run: python -m dlspec.gd_variants.grad_check
 """
 
 import numpy as np
-from model import init_parameters, forward, backward
+
+from dlspec.gd_variants.model import backward, forward, init_parameters
 
 
 def compute_loss(y_hat: np.ndarray, y: np.ndarray) -> float:
@@ -78,7 +79,7 @@ def relative_error(g1: np.ndarray, g2: np.ndarray) -> float:
     return num / den
 
 
-def run_grad_check():
+def run_grad_check() -> dict[str, float]:
     """
     Small-scale gradient check on random data.
 
@@ -86,6 +87,9 @@ def run_grad_check():
     Our model has ~849 parameters, so that's ~1700 forward passes. Manageable
     on a tiny dataset but would be painful on full California Housing.
     Use m=10 examples — enough to exercise all code paths, small enough to be fast.
+
+    Returns:
+        {param name: relative error}, so tests can assert on it.
     """
     rng = np.random.default_rng(0)
     X = rng.normal(size=(10, 8))
@@ -101,9 +105,11 @@ def run_grad_check():
     print(f"{'param':<6} {'rel_error':<14} {'status'}")
     print("-" * 40)
     all_passed = True
+    errors = {}
     for key in params:
         num_grad = numeric_gradient(params, X, y, key)
         err = relative_error(analytic_grads[key], num_grad)
+        errors[key] = err
         status = "OK" if err < 1e-5 else "FAIL"
         if err >= 1e-5:
             all_passed = False
@@ -111,6 +117,7 @@ def run_grad_check():
 
     print("-" * 40)
     print("ALL PASS" if all_passed else "CHECK FAILED — investigate before proceeding")
+    return errors
 
 
 if __name__ == "__main__":

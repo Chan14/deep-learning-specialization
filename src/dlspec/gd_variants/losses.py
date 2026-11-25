@@ -13,7 +13,7 @@ Design notes:
       optimizer step, where `grad_W += (lambda_reg / m) * W` is added
       to each weight gradient. See optimizer.py.
 
-Verified: Smoke test passed
+Tested in tests/gd_variants/test_losses.py.
 """
 
 import numpy as np
@@ -91,37 +91,3 @@ def compute_total_loss(
     data_loss = compute_data_loss(y_hat, y)
     reg_loss = compute_reg_loss(params, lambda_reg, m)
     return {"data": data_loss, "reg": reg_loss, "total": data_loss + reg_loss}
-
-
-# ---------- Smoke test ----------
-
-if __name__ == "__main__":
-    from model import init_parameters, forward
-
-    rng = np.random.default_rng(0)
-    X = rng.normal(size=(10, 8))
-    y = rng.normal(size=(10, 1))
-    params = init_parameters([8, 32, 16, 1], seed=1)
-    y_hat, _ = forward(X, params)
-
-    # Zero regularization: total should equal data, reg should be 0.
-    loss0 = compute_total_loss(y_hat, y, params, lambda_reg=0.0)
-    assert loss0["reg"] == 0.0, f"Reg should be 0 when lambda=0, got {loss0['reg']}"
-    assert abs(loss0["total"] - loss0["data"]) < 1e-12
-    print(
-        f"lambda=0.0   data={loss0['data']:.4f}  reg={loss0['reg']:.4f}  total={loss0['total']:.4f}"
-    )
-
-    # Nonzero regularization: reg > 0, total = data + reg.
-    loss1 = compute_total_loss(y_hat, y, params, lambda_reg=0.1)
-    assert loss1["reg"] > 0, "Reg should be positive when lambda > 0"
-    assert abs(loss1["total"] - (loss1["data"] + loss1["reg"])) < 1e-12
-    # Data loss should be unchanged by regularization.
-    assert (
-        abs(loss1["data"] - loss0["data"]) < 1e-12
-    ), "Data loss changed when lambda changed!"
-    print(
-        f"lambda=0.1   data={loss1['data']:.4f}  reg={loss1['reg']:.4f}  total={loss1['total']:.4f}"
-    )
-
-    print("Loss module smoke test passed.")
