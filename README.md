@@ -1,10 +1,10 @@
 # deep_learning
 
-My work through the [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) (DeepLearning.AI, taught by Andrew Ng): the programming assignments, my own redos and experiments, and the reusable code that came out of them.
+My work through the [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) (DeepLearning.AI, taught by Andrew Ng): the programming assignments, my own experiments, and the reusable code that came out of them.
 
 **Jump to:** [Course 1](#course-1--neural-networks-and-deep-learning) · [Course 2](#course-2--improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization) · [Beyond the courses](#beyond-the-courses) · [Working in this repo](#working-in-this-repo)
 
-In each week, the course's own material comes first. **My redo** (the assignment rewritten as code only), **My code** (my own scripts), and **Scratch** (rough work) follow it.
+In each week, the course's own material comes first. **Stable implementations**, **My code**, and **My experiments** (small notebooks that build intuition for one idea) follow it.
 
 ## Course 1 : [Neural Networks and Deep Learning](https://www.coursera.org/learn/neural-networks-deep-learning)
 
@@ -15,31 +15,25 @@ In each week, the course's own material comes first. **My redo** (the assignment
   - [Practice quiz: Neural network basics](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/practice_quizzes/p1_neural_network_basics)
   - [Programming Assignment 1 (optional)](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a1_python_basics_with_numpy)
     - [Python Basics with NumPy](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a1_python_basics_with_numpy/Python_Basics_with_Numpy.ipynb)
-    - My redo: [python_basics_with_numpy_redo.ipynb](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a1_python_basics_with_numpy/python_basics_with_numpy_redo.ipynb)
   - [Programming Assignment 2](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a2_logistic_regression_as_a_neural_network)
     - [Logistic Regression with a Neural Network Mindset](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a2_logistic_regression_as_a_neural_network/Logistic_Regression_with_a_Neural_Network_mindset.ipynb)
-    - My redo: [logistic_regression_redo.ipynb](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a2_logistic_regression_as_a_neural_network/logistic_regression_redo.ipynb) · [logistic_regression_examples_as_rows.ipynb](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a2_logistic_regression_as_a_neural_network/logistic_regression_examples_as_rows.ipynb): the same model with one training example per row instead of per column
+  - Stable implementations: [logistic regression with examples as rows](course1_neural_networks_and_deep_learning/w2_neural_networks_basics/programming_assignments/a2_logistic_regression_as_a_neural_network/logistic_regression_examples_as_rows.ipynb). A numerically stable sigmoid (it uses the form of $\sigma(z)$ that is safe for the sign of $z$), and a cross-entropy cost computed from $z$ with $\log(1+e^{z})$ through `log1p`, so it never takes $\log 0$
 
 - [Week 3 : Shallow neural networks](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks)
   - [Practice quiz: Shallow neural networks](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/practice_quizzes/p1_shallow_neural_networks)
   - [Programming Assignment](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/programming_assignments/a1_planar_data_classification)
     - [Planar Data Classification with One Hidden Layer](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/programming_assignments/a1_planar_data_classification/Planar_data_classification_with_one_hidden_layer.ipynb)
-    - My redo: [planar_data_classification_redo.ipynb](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/programming_assignments/a1_planar_data_classification/planar_data_classification_redo.ipynb)
-  - [Scratch](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch)
-    - ReLU vs sigmoid gradients, interactive: [Alex's version](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch/relu_vs_sigmoid_gradients_alex.ipynb) · [Grok's version](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch/relu_vs_sigmoid_gradients_grok.ipynb)
+  - [My experiments](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch)
+    - ReLU vs sigmoid gradients, interactive: [on a shared bias](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch/relu_vs_sigmoid_bias_gradient.ipynb) · [on an early weight, path by path](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch/relu_vs_sigmoid_weight_gradient.ipynb)
     - How layers bend a 2D grid: [one linear layer vs linear → ReLU → linear](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch/grid_through_relu_layer.py) · [two layers, step by step](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch/grid_through_two_layers.py) · [the same, animated](course1_neural_networks_and_deep_learning/w3_shallow_neural_networks/scratch/grid_through_two_layers_animated.ipynb)
 
 - [Week 4 : Deep neural networks](course1_neural_networks_and_deep_learning/w4_deep_neural_networks)
   - [Practice quiz: Key concepts on deep neural networks](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/practice_quizzes/p1_key_concepts_on_deep_neural_networks)
   - [Programming Assignment 1](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/programming_assignments/a1_deep_neural_network_step_by_step)
     - [Building your Deep Neural Network: Step by Step](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/programming_assignments/a1_deep_neural_network_step_by_step/Building_your_Deep_Neural_Network_Step_by_Step.ipynb)
-    - My redo: [deep_neural_network_step_by_step_redo.ipynb](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/programming_assignments/a1_deep_neural_network_step_by_step/deep_neural_network_step_by_step_redo.ipynb)
   - [Programming Assignment 2](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/programming_assignments/a2_deep_neural_network_application)
     - [Deep Neural Network: Application](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/programming_assignments/a2_deep_neural_network_application/Deep_Neural_Network_Application.ipynb)
-    - My redo: [deep_neural_network_application_redo.ipynb](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/programming_assignments/a2_deep_neural_network_application/deep_neural_network_application_redo.ipynb)
-  - [Scratch](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/scratch)
-    - [L-layer network on scikit-learn toy datasets](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/scratch/l_layer_deepnet.ipynb)
-    - [L-layer network with Alex](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/scratch/l_layer_deepnet_with_alex.ipynb): numerically stable sigmoid output with binary cross-entropy from logits
+  - Stable implementations: [L-layer network from scratch](course1_neural_networks_and_deep_learning/w4_deep_neural_networks/scratch/l_layer_network_from_scratch.ipynb). Binary cross-entropy computed from the logits $Z^{[L]}$, and backprop that starts from $dZ^{[L]} = A^{[L]} - Y$ instead of dividing by $A^{[L]}$; plus early stopping on the cost
 
 **[Certificate of Completion](course1_neural_networks_and_deep_learning/certificate/course1_certificate.pdf)**
 
@@ -50,24 +44,19 @@ In each week, the course's own material comes first. **My redo** (the assignment
   - [Practice quiz: Practical aspects of deep learning](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/practice_quizzes/p1_practical_aspects_of_deep_learning)
   - [Programming Assignment 1](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a1_initialization)
     - [Initialization](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a1_initialization/Initialization.ipynb) ([introduction](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a1_initialization/introduction.md))
-    - My redo: [initialization_redo.ipynb](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a1_initialization/initialization_redo.ipynb)
   - [Programming Assignment 2](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a2_regularization)
     - [Regularization](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a2_regularization/Regularization.ipynb) ([introduction](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a2_regularization/introduction.md))
-    - My redo: [regularization_redo.ipynb](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a2_regularization/regularization_redo.ipynb)
   - [Programming Assignment 3](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a3_gradient_checking)
     - [Gradient Checking](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a3_gradient_checking/Gradient_Checking.ipynb) ([introduction](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a3_gradient_checking/introduction.md))
-    - My redo: [gradient_checking_redo.ipynb](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/programming_assignments/a3_gradient_checking/gradient_checking_redo.ipynb)
-  - [Scratch](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch)
+  - [My experiments](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch)
     - [Dropout intuition](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/dropout_intuition): [dropout_experiment.py](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/dropout_intuition/dropout_experiment.py) trains with and without dropout on data built to overfit · [step by step](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/dropout_intuition/dropout_stepwise.ipynb)
-    - [Neural network intuition](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/neural_network_intuition/simple_network.ipynb): a forward pass by hand with small integer weights
-    - [Normalization intuition](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/normalization_intuition): [normalizing 1D and 2D inputs](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/normalization_intuition/norm_1d.ipynb) · [gradient descent with unscaled features](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/normalization_intuition/lin_regression.ipynb)
+    - [Normalization intuition](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/normalization_intuition): [normalizing 1D and 2D inputs](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/normalization_intuition/input_normalization_plots.ipynb) · [gradient descent on unscaled vs normalized features](course2_improving_deep_neural_networks/w1_practical_aspects_of_deep_learning/scratch/normalization_intuition/gradient_descent_unscaled_vs_normalized.ipynb)
 
 - [Week 2 : Optimization algorithms](course2_improving_deep_neural_networks/w2_optimization_algorithms)
   - [Lecture notes](course2_improving_deep_neural_networks/w2_optimization_algorithms/lecture_notes/c2_w2_lecture_notes.pdf)
   - [Practice quiz: Optimization algorithms](course2_improving_deep_neural_networks/w2_optimization_algorithms/practice_quizzes/p1_optimization_algorithms)
   - [Programming Assignment](course2_improving_deep_neural_networks/w2_optimization_algorithms/programming_assignments/a1_optimization_methods)
     - [Optimization Methods](course2_improving_deep_neural_networks/w2_optimization_algorithms/programming_assignments/a1_optimization_methods/Optimization_methods.ipynb) ([introduction](course2_improving_deep_neural_networks/w2_optimization_algorithms/programming_assignments/a1_optimization_methods/introduction.md))
-    - My redo: [optimization_methods_redo.ipynb](course2_improving_deep_neural_networks/w2_optimization_algorithms/programming_assignments/a1_optimization_methods/optimization_methods_redo.ipynb)
   - [My code](course2_improving_deep_neural_networks/w2_optimization_algorithms/my_code)
     - [Momentum as an EWA of gradients](course2_improving_deep_neural_networks/w2_optimization_algorithms/my_code/momentum_ewa_lab.py): batch GD, SGD, and SGD with momentum in a narrow ravine, with each velocity update split into the parts that cancel and the parts that add up
     - Batch GD vs SGD vs mini-batch on California Housing: the package [`dlspec.gd_variants`](#reusable-package-dlspec)
@@ -77,11 +66,9 @@ In each week, the course's own material comes first. **My redo** (the assignment
   - [Practice quiz: Hyperparameter tuning, batch normalization, programming frameworks](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/practice_quizzes/p1_hyperparameter_tuning_batch_norm_and_frameworks)
   - [Programming Assignment](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/programming_assignments/a1_tensorflow_introduction)
     - [TensorFlow Introduction](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/programming_assignments/a1_tensorflow_introduction/Tensorflow_introduction.ipynb) ([introduction](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/programming_assignments/a1_tensorflow_introduction/introduction.md))
-    - My redo: [tensorflow_introduction_redo.ipynb](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/programming_assignments/a1_tensorflow_introduction/tensorflow_introduction_redo.ipynb) · [tensorflow_introduction_worked.ipynb](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/programming_assignments/a1_tensorflow_introduction/tensorflow_introduction_worked.ipynb): my working copy of the course notebook, with extra shape checks
-  - [Scratch](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/scratch)
-    - [Batch norm by hand](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/scratch/batch_norm_calc.ipynb)
-    - [Sampling hyperparameters on the right scale](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/scratch/sampling.ipynb)
-    - [TensorFlow training loop test](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/scratch/tensorflow_test.ipynb)
+  - [My experiments](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/scratch)
+    - [Sampling hyperparameters on a log scale](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/scratch/hyperparameter_log_scale_sampling.ipynb): learning rate in $[10^{-4}, 1]$, and momentum $\beta$ through $1 - \beta$
+    - [Batch norm by hand](course2_improving_deep_neural_networks/w3_hyperparameter_tuning_batch_norm_and_frameworks/scratch/batch_norm_by_hand.ipynb): normalizing $Z$ per unit, and why scaling $W$ doesn't change the normalized result
 
 **[Certificate of Completion](course2_improving_deep_neural_networks/certificate/course2_certificate.pdf)**
 
