@@ -39,11 +39,16 @@ The momentum update (Ng's "EWA of gradients" form):
 ================================================================================
 """
 
+from pathlib import Path
+
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")                 # headless: save figures to files
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401  (registers 3d projection)
+
+# Figures are saved next to this script, whatever the working directory.
+HERE = Path(__file__).resolve().parent
 
 np.set_printoptions(precision=4, suppress=True)
 
@@ -233,7 +238,7 @@ ax1.set_title("PLOT 1 — the ravine and three paths\n"
               "SGD bounces across the walls; momentum glides down the floor")
 ax1.legend(loc="upper right", framealpha=0.95)
 fig1.tight_layout()
-fig1.savefig("plot1_ravine_paths.png", dpi=130)
+fig1.savefig(HERE / "plot1_ravine_paths.png", dpi=130)
 
 # ==============================================================================
 # PLOT 2 — 3D surface, zoomed near the chosen step, with the vectors on it
@@ -275,7 +280,7 @@ ax2.set_title(f"PLOT 2 — the valley in 3D near step {FEATURE}\n"
 ax2.legend(loc="upper left", fontsize=8)
 ax2.view_init(elev=38, azim=-60)
 fig2.tight_layout()
-fig2.savefig("plot2_valley_3d.png", dpi=130)
+fig2.savefig(HERE / "plot2_valley_3d.png", dpi=130)
 
 # ==============================================================================
 # PLOT 3 — the vector decomposition at the chosen step, math written on it
@@ -332,6 +337,6 @@ ax3.set_title(f"PLOT 3 — velocity decomposition at step {FEATURE}\n"
 ax3.legend(loc="lower right", fontsize=9, framealpha=0.95)
 ax3.grid(True, alpha=0.25)
 fig3.tight_layout()
-fig3.savefig("plot3_vector_decomposition.png", dpi=130)
+fig3.savefig(HERE / "plot3_vector_decomposition.png", dpi=130)
 
 print("\nSaved: plot1_ravine_paths.png, plot2_valley_3d.png, plot3_vector_decomposition.png")

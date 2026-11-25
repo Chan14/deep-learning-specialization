@@ -1,5 +1,10 @@
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Figures are saved next to this script, whatever the working directory.
+HERE = Path(__file__).resolve().parent
 
 # ─────────────────────────────────────────────
 # Reproducibility
@@ -251,6 +256,6 @@ ax2.legend(fontsize=9)
 ax2.grid(alpha=0.2)
 
 plt.tight_layout()
-plt.savefig("dropout_experiment.png", dpi=150, bbox_inches="tight")
+plt.savefig(HERE / "dropout_experiment.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("\nPlot saved to dropout_experiment.png")
