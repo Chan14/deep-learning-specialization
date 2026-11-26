@@ -1,4 +1,4 @@
-# deep_learning
+# deep-learning-specialization
 
 My work through the [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) (DeepLearning.AI, taught by Andrew Ng): the programming assignments, my own implementations and experiments, and the reusable code that came out of them.
 
@@ -105,7 +105,7 @@ Topics the specialization doesn't teach.
 ### Repository layout
 
 ```
-deep_learning/
+deep-learning-specialization/
 ├── pyproject.toml          # package metadata, dependencies, pytest and ruff config
 ├── requirements.txt        # exact pinned snapshot of dl-spec-env
 ├── .python-version         # pinned interpreter (3.12)
