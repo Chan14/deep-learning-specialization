@@ -13,8 +13,8 @@ __pycache__/
 # --- Virtual environments ---
 .venv/
 venv/
-# NOTE: .python-version is intentionally TRACKED (pins the interpreter),
-# even though a global gitignore may ignore it elsewhere.
+# pyenv: each machine sets its own env with `pyenv local <env>`
+.python-version
 
 # --- Packaging ---
 *.egg-info/
